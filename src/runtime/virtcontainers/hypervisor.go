@@ -415,6 +415,10 @@ type HypervisorConfig struct {
 
 	// TxRateLimiterMaxRate is used to control network I/O outbound bandwidth on VM level.
 	TxRateLimiterMaxRate uint64
+
+	// EPCSize specifies the size in bytes for the EPC Section.
+	// Enable SGX. Hardware-based isolation and memory encryption.
+	EPCSize int32
 }
 
 // vcpu mapping from vcpu number to thread number

@@ -822,6 +822,7 @@ func newClhHypervisorConfig(h hypervisor) (vc.HypervisorConfig, error) {
 		PCIeRootPort:            h.PCIeRootPort,
 		DisableVhostNet:         true,
 		VirtioFSExtraArgs:       h.VirtioFSExtraArgs,
+		EPCSize:                 defaultEPCSize,
 	}, nil
 }
 
@@ -1014,6 +1015,7 @@ func GetDefaultHypervisorConfig() vc.HypervisorConfig {
 		DisableImageNvdimm:      defaultDisableImageNvdimm,
 		RxRateLimiterMaxRate:    defaultRxRateLimiterMaxRate,
 		TxRateLimiterMaxRate:    defaultTxRateLimiterMaxRate,
+		EPCSize:                 defaultEPCSize,
 	}
 }
 
