@@ -485,6 +485,12 @@ func (clh *cloudHypervisor) CreateVM(ctx context.Context, id string, network Net
 	cpu_topology.Packages = func(i int32) *int32 { return &i }(1)
 	clh.vmconfig.Cpus.Topology = cpu_topology
 
+	// Platform config
+	platform_config := chclient.NewPlatformConfig()                                    // --platform
+	platform_config.NumPciSegments = func(i int32) *int32 { return &i }(2)             //  num_pci_segments=2
+	platform_config.IommuSegments = func(i []int32) *[]int32 { return &i }([]int32{1}) // iommu_segments=[1]
+	clh.vmconfig.Platform = platform_config
+
 	// Overwrite the default value of HTTP API socket path for cloud hypervisor
 	apiSocketPath, err := clh.apiSocketPath(id)
 	if err != nil {
